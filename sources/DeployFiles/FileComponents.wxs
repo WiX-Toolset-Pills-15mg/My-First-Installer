@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Wix Toolset Pills 15mg
+Copyright (C) 2019-2021 Dust in the Wind
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+
+        <!--
+        ====================================================================================
+        Step 2: Add files to the installer
+        ====================================================================================
+        -->
+
+        <!-- This is a group that contains components tht deploys files in the INSTALLFOLDER. -->
+        <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
+
+            <!--
+            The component element describes a set of resources (usually files, registry entries, and shortcuts)
+            that need to be installed as a single unit.
+            Components play a critical role when you decide to build patches later.
+            
+            Every component must have its own unique GUID.
+            -->
+            <Component Id="DescriptionFileComponent">
+                <!--
+                In general, you should restrict yourself to a single file per component.
+                The Windows Installer is designed to support thousands of components in a single installer,
+                so unless you have a very good reason, keep to one file per component. 
+                
+                In the repair process, only the main file of the component can be repaired.
+                -->
+                <!--
+                The Source attribute specifies the location of the file on your machine, so WiX can find it and build it into the installer.
+                -->
+                <!--
+                The KeyPath attribute is set to yes to tell the Windows Installer that this particular file should be used to determine whether the component is installed.
+                If you do not set the KeyPath attribute, WiX will look at the child elements under the component in sequential order and try to automatically select one of them as a key path.
+                Allowing WiX to automatically select a key path can be dangerous because adding or removing child elements under the component can inadvertently cause the key path to change,
+                which can lead to installation problems.
+                In general, you should always set the KeyPath attribute to yes to ensure that the key path will not inadvertently change if you update your setup authoring in the future.
+                -->
+                <!--
+                The Checksum attribute should be set to yes for executable files that have a checksum value in the file header (this is generally true for all executables),
+                and is used by the Windows Installer to verify the validity of the file on re-install.
+                -->
+                <File Id="DescriptionFile"  Source="$(var.ProjectDir)description.txt" KeyPath="yes"/>
+
+            </Component>
+
+        </ComponentGroup>
+
+    </Fragment>
+</Wix>

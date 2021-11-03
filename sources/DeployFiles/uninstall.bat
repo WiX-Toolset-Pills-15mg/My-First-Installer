@@ -1,0 +1,1 @@
+msiexec /x DeployFiles.msi /l*vx uninstall.log

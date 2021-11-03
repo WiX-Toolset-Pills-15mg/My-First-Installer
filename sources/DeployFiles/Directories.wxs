@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Wix Toolset Pills 15mg
+Copyright (C) 2019-2021 Dust in the Wind
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+
+        <!--
+        ====================================================================================
+        Step 1: Define the directory structure
+        ====================================================================================
+        -->
+
+        <!--
+        This section describes the directory structure that is needed on the target machine.
+        To improve the readability of the WiX file, it is a good practice to define the installation directories
+        separate of the section where there are listed the files to be deployed.
+        -->
+
+        <!-- The directories are created when there are files deployed in that directory. -->
+
+        <!--
+        The element with the id TARGETDIR is required by the Windows Installer and is the root of all directory structures of the installation.
+        Every WiX project will have this directory element.
+        -->
+        <Directory Id="TARGETDIR" Name="SourceDir">
+
+            <!--
+            The second element, with the id ProgramFilesFolder, uses a pre-defined Windows Installer property
+            to reference the Program Files folder on the user's machine.
+            In most cases this will resolve to c:\Program Files\.
+            -->
+            <Directory Id="ProgramFilesFolder">
+
+                <!-- This element creates the "Dust in the Wind" directory. -->
+                <Directory Id="ManufacturerFolder" Name="Dust in the Wind">
+
+                    <!--
+                    This element creates the application's folder under Program Files, and it is given the id INSTALLFOLDER for later use in the WiX project.
+                    The id is in all capital letters to make it a public property that can be set from UI or via the command line.
+                    -->
+                    <Directory Id="INSTALLFOLDER" Name="Deploy Files Example" />
+
+                </Directory>
+
+            </Directory>
+
+        </Directory>
+
+    </Fragment>
+</Wix>
