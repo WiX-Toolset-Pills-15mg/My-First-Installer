@@ -24,6 +24,7 @@
     <Compile Include="FileComponents.wxs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dummy.txt" />
     <Content Include="install.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

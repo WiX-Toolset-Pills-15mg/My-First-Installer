@@ -37,7 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             
             Every component must have its own unique GUID.
             -->
-            <Component Id="DescriptionFileComponent">
+            <Component Id="DummyFileComponent">
                 <!--
                 In general, you should restrict yourself to a single file per component.
                 The Windows Installer is designed to support thousands of components in a single installer,
@@ -59,7 +59,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 The Checksum attribute should be set to yes for executable files that have a checksum value in the file header (this is generally true for all executables),
                 and is used by the Windows Installer to verify the validity of the file on re-install.
                 -->
-                <File Id="DescriptionFile"  Source="$(var.ProjectDir)description.txt" KeyPath="yes"/>
+                <File Id="DummyFile"  Source="$(var.ProjectDir)dummy.txt" KeyPath="yes"/>
 
             </Component>
 

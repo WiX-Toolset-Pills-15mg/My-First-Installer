@@ -1,0 +1,4 @@
+WiX Toolset Pills - Deploy Files
+==============================================================================
+
+This is a dummy file.
