@@ -1,0 +1,1 @@
+msiexec /x MyFirstInstaller.msi /l*vx uninstall.log

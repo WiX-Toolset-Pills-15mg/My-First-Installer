@@ -1,10 +1,54 @@
-# Deploy Files
+# My First Installer
 
 In this tutorial we will:
 
 - Create a new WiX Project.
 - Configure a directory structure to be created on the target machine when installer is run.
 - Provide a text file to be deployed in the target directory.
+
+## About Windows Installer, the MSI and WiX
+
+Before we start, I think it would be useful to have a few words about these three concepts:
+
+### a) Windows Installer
+
+Before the 2000s, Microsoft created for Windows a centralized mechanism to handle the application's installation process and keep track of those installed applications. They called it "Windows Installer".
+
+### b) An MSI file
+
+An MSI file is a database, containing tables with all the necessary data needed to install/uninstall/repair the application. We have there all kind of information like application's name, version, the default path where to be installed, the list of actions to be executed at install time etc. The actual binary files that should be deployed are also packed inside this database. Note that, optionally, we may decide to pack those files in separate cab packages.
+
+This MSI file is not an executable. When double clicked, windows opens this database with the `msiexec.exe` application and executes all the actions specified inside the database. For more details regarding the custom actions and the order of execution, see the pills:
+
+- "Immediate Custom Action" - https://github.com/WiX-Toolset-Pills-15mg/Immediate-Custom-Action
+- "Deferred Custom Action" - https://github.com/WiX-Toolset-Pills-15mg/Deferred-Custom-Action
+
+### c) Orca
+
+An MSI file can be opened and modified using the Orca tool provided by Microsoft as part of the Windows SDK.
+
+To install Orca:
+
+- Download the Windows SDK from here: https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/
+- Mount the iso file by double clicking it.
+- Run the `\installers\Orca-x86_en-us.msi` installer.
+
+Open Orca and load an MSI file. In the left you will find a list with all the tables present in this MSI. When selecting a table, in the right part you will see the records present in that table.
+
+![image-20211107103802965](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20211107103802965.png)
+
+### c) WiX Toolset
+
+One way to create an MSI is to use Orca and modify, by hand all the data in there. Another way, is to use WiX Toolset.
+
+WiX Toolset is a set of tools that helps you to generate an MSI installer:
+
+-  You, as a developer, describe in an xml file what you want the MSI to contain.
+- Then, at build time, WiX Toolset will generate the MSI based on those specifications. This is done by two internal tools called:
+  - `lite.exe` (the linker) - https://wixtoolset.org/documentation/manual/v3/overview/light.html
+  - `candle.exe` (the compiler) - https://wixtoolset.org/documentation/manual/v3/overview/candle.html
+
+**Note**: Don't mistake "WiX Toolset" for "Wix" the web platform that is used for creating websites.
 
 ## Prerequisites
 
@@ -54,7 +98,7 @@ The `<Product>` tag is the main section of the WiX project. When you read a WiX 
 The first aspects that may capture our attention are the name of the product and the manufacturer. They are provided as attributes of the `<Product>` element:
 
 ```xml
-<Product Id="*" Name="Deploy Files - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
+<Product Id="*" Name="My First Installer - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
          Manufacturer="Dust in the Wind" UpgradeCode="1005fc0e-c562-4498-9196-aa6fdd5f4e62">
     ...
 </Product>
@@ -65,7 +109,7 @@ The version may also be interesting, but for the first installer we are creating
 Some other xml tags are generated, but we may safely leave them, for now, as they are. No need to change them: `<Package>`, `<MajorUpgrade>`, `<MediaTemplate>`:
 
 ```xml
-<Product Id="*" Name="Deploy Files - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
+<Product Id="*" Name="My First Installer - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
          Manufacturer="Dust in the Wind" UpgradeCode="1005fc0e-c562-4498-9196-aa6fdd5f4e62">
     
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
@@ -82,12 +126,12 @@ Some other xml tags are generated, but we may safely leave them, for now, as the
 The `<Feature>` tag, though, may need some explanation.
 
 ```xml
-<Product Id="*" Name="Deploy Files - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
+<Product Id="*" Name="My First Installer - WiX Toolset Pill" Language="1033" Version="1.0.0.0"
          Manufacturer="Dust in the Wind" UpgradeCode="1005fc0e-c562-4498-9196-aa6fdd5f4e62">
 
     ...
 
-    <Feature Id="ProductFeature" Title="DeployFiles" Level="1">
+    <Feature Id="ProductFeature" Title="Deploy Files" Level="1">
         <ComponentGroupRef Id="FileComponents" />
     </Feature>
 
@@ -126,7 +170,7 @@ Next, let's describe the directory structure that we need to be created on the t
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder">
                 <Directory Id="ManufacturerFolder" Name="Dust in the Wind">
-                    <Directory Id="INSTALLFOLDER" Name="Deploy Files - WiX Toolset Pill" />
+                    <Directory Id="INSTALLFOLDER" Name="My First Installer - WiX Toolset Pill" />
                 </Directory>
             </Directory>
         </Directory>
@@ -141,14 +185,96 @@ The element with the id `TARGETDIR` is required by the Windows Installer and is 
 
 Next directory is the one having the `ProgramFilesFolder` id. It has no name. The actual name is provided by the Windows operating system at install time.
 
-Next we may add other custom directories. In this tutorial we added the `Dust in the Wind` directory that can be referenced in the installer by the `ManufacturerFolder` id.
+Next, we may add other custom directories. In this tutorial we added the `Dust in the Wind` directory that can be referenced in the installer by the `ManufacturerFolder` id.
 
-The `INSTALLFOLDER` is another important directory. This is considered the root directory where the product will be installed.
+The `INSTALLFOLDER` is another important directory. This is the root directory where the product will be installed.
 
 **Important**: Just by specifying the directories here, the installer will not really create them empty on the disk. Only files are created by the installer. We need to describe the directory hierarchy here only to be able to reference them later, by id, when we configure the files. See the next step.
 
-**Suggestion**: Even if WiX does allow it, I suggest to never add files directly in this structure. I prefer to keep this structure short, clean and easy to understand. The files will be configured later in another wxs file and will reference these directories by id.
+**Suggestion**: Even if WiX allows it, I suggest to never add files directly in this structure. I prefer to keep this structure short, clean and easy to understand. The files will be configured later in another wxs file and will reference these directories by id.
 
 ## Step 4: Add files
 
-TBD
+The next step would be to specify the files that need to be deployed by the installer. As with the directories fragment, let's to move this fragment in a separate file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+
+        <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
+
+            <Component>
+                <File Id="DummyFile" Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
+            </Component>
+
+        </ComponentGroup>
+
+    </Fragment>
+</Wix>
+```
+
+The files are added into the installer by creating components. Lots of components.
+
+**Important**: It is a good practice to create one component per file. This is because WiX keeps track of only one thing, in this case file, per component. I will not go into more details regarding the mechanism used by WiX, but I need to mention that this practice is important mainly for the repair flow because WiX can verify and restore only one file per component.
+
+**Note**: The main file of the component is specified by the `KeyPath` attribute. 
+
+Let's discuss the example.
+
+### Add the component to the a feature
+
+An id, in this case `FileComponents` is needed to be able reference it back from the `<Features>` tag. Remember that, each component or component group must be added to a feature:
+
+```xml
+<Product ...>
+    ...
+    
+    <Feature Id="ProductFeature" Title="Deploy Files" Level="1">
+        <ComponentGroupRef Id="FileComponents" />
+    </Feature>
+    
+</Product>
+```
+
+### The component's directory
+
+Each component or component group must have a base directory where it is installed. This is specified by the `Directory` attribute. In our example, the directory of the component group is the one with the id `INSTALLFOLDER`. See the `Directories.wxs` file for details regarding where on the disk will be this directory created.
+
+### The file's source location
+
+This is the path where the file is located on your machine at compile time. WiX will take the file from there and pack it into the MSI.
+
+In our case, because the file is included in our Visual Studio project, we are able to use the `var.ProjectDir` variable to specify the file location relative to the root path of the project.
+
+### The `KeyPath`
+
+The `KeyPath` attribute is set to yes to tell the Windows Installer that this particular file should be used to determine whether the component is installed or not. If you do not set the `KeyPath` attribute explicitly, WiX will look at the child elements under the component in sequential order and try to automatically select one of them as a key path.
+
+Allowing WiX to automatically select a key path can be dangerous because adding or removing child elements under the component can inadvertently cause the key path to change, which can lead to installation problems.
+
+In general, you should always set the `KeyPath` attribute to `yes` to ensure that the key path will not inadvertently change if you update your setup authoring in the future.
+
+**Note**: The `Checksum` attribute should also be set to `yes` for executable files that have a checksum value in the file header (this is generally true for all executables). It is used by the Windows Installer to verify the validity of the file on re-install.
+
+## Step 5: The MSI's Name
+
+The last thing remaining to be done is to choose a name for the MSI file:
+
+- Right click on the project -> Properties -> Output name
+
+![image-20211107094820610](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20211107094820610.png)
+
+## Step 6: Done
+
+Build and then install :)
+
+**Note**: The source code example provides to files called `install.bat` and `uninstall.bat` that, even if they are configured in the project to be automatically deployed in the output (`bin/Release`) directory, they are not actually deployed. If you need them, please copy them by hand there.
+
+## Other Important notes
+
+### Did you installed and lost the MSI file?
+
+If, in the developing process, it happens that you install an MSI and then, after a rebuild, you discover you are not able to uninstall the previous version because you lost the original MSI file (overwritten by the new one), don't panic.
+
+Go to Control Panel -> Programs and Features and uninstall it from there. By default, Windows keeps a copy of the original MSI file.

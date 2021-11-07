@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-    <Product Id="*" Name="Deploy Files - WiX Toolset Pill" Language="1033" Version="1.0.0.0" Manufacturer="Dust in the Wind" UpgradeCode="1005fc0e-c562-4498-9196-aa6fdd5f4e62">
+    <Product Id="*" Name="My First Installer - WiX Toolset Pill" Language="1033" Version="1.0.0.0" Manufacturer="Dust in the Wind" UpgradeCode="1005fc0e-c562-4498-9196-aa6fdd5f4e62">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         The Level attribute should be set to 1 to enable the installation of the feature by default.
         -->
 
-        <Feature Id="ProductFeature" Title="DeployFiles" Level="1">
+        <Feature Id="ProductFeature" Title="Deploy Files" Level="1">
 
             <!--
             ====================================================================================

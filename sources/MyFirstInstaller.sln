@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DeployFiles", "DeployFiles\DeployFiles.wixproj", "{68AE1DDF-5CBD-4EF0-AD85-C056F20EE62B}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MyFirstInstaller", "MyFirstInstaller\MyFirstInstaller.wixproj", "{68AE1DDF-5CBD-4EF0-AD85-C056F20EE62B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

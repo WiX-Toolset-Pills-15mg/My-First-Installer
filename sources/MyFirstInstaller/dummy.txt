@@ -1,4 +1,4 @@
-WiX Toolset Pills - Deploy Files
+WiX Toolset Pills - My First Installer
 ==============================================================================
 
 This is a dummy file.

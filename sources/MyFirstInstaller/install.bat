@@ -1,0 +1,1 @@
+msiexec /i MyFirstInstaller.msi /l*vx install.log

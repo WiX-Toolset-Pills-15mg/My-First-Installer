@@ -6,8 +6,9 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>68ae1ddf-5cbd-4ef0-ad85-c056f20ee62b</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>DeployFiles</OutputName>
+    <OutputName>MyFirstInstaller</OutputName>
     <OutputType>Package</OutputType>
+    <Name>MyFirstInstaller</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>

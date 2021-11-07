@@ -55,7 +55,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     This element creates the application's folder under Program Files, and it is given the id INSTALLFOLDER for later use in the WiX project.
                     The id is in all capital letters to make it a public property that can be set from UI or via the command line.
                     -->
-                    <Directory Id="INSTALLFOLDER" Name="Deploy Files - WiX Toolset Pill" />
+                    <Directory Id="INSTALLFOLDER" Name="My First Installer - WiX Toolset Pill" />
 
                 </Directory>
 
