@@ -1,11 +1,12 @@
-# Deploy Files
+# My First Installer
 
 ## Description
 
-This Pill contains a WiX project that deploys a single file in the "c:\Program Files\Dust in the Wind\Deploy Files Example" directory.
+This Pill contains a WiX project that demonstrates how to deploy a single file in the installation directory.
 
-The code contains comments with explanations. Follow the "Step X" comments.
+A step-by-step tutorial can be found in the article, [here](doc/article/README.md).
 
 ## Question
 
-- How to deploy a file?
+- How to deploy a file using WiX Toolset?
+

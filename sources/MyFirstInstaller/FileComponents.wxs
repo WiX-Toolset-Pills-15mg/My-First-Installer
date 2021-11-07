@@ -22,42 +22,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Fragment>
 
         <!--
-        ====================================================================================
-        Step 2: Add files to the installer
-        ====================================================================================
+        A component group may contain multiple components.
         -->
-
-        <!-- This is a group that contains components tht deploys files in the INSTALLFOLDER. -->
         <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
 
-            <!--
-            The component element describes a set of resources (usually files, registry entries, and shortcuts)
-            that need to be installed as a single unit.
-            Components play a critical role when you decide to build patches later.
-            
-            Every component must have its own unique GUID.
-            -->
             <Component>
+
                 <!--
                 In general, you should restrict yourself to a single file per component.
                 The Windows Installer is designed to support thousands of components in a single installer,
                 so unless you have a very good reason, keep to one file per component. 
                 
                 In the repair process, only the main file of the component can be repaired.
-                -->
-                <!--
-                The Source attribute specifies the location of the file on your machine, so WiX can find it and build it into the installer.
-                -->
-                <!--
-                The KeyPath attribute is set to yes to tell the Windows Installer that this particular file should be used to determine whether the component is installed.
-                If you do not set the KeyPath attribute, WiX will look at the child elements under the component in sequential order and try to automatically select one of them as a key path.
-                Allowing WiX to automatically select a key path can be dangerous because adding or removing child elements under the component can inadvertently cause the key path to change,
-                which can lead to installation problems.
-                In general, you should always set the KeyPath attribute to yes to ensure that the key path will not inadvertently change if you update your setup authoring in the future.
-                -->
-                <!--
-                The Checksum attribute should be set to yes for executable files that have a checksum value in the file header (this is generally true for all executables),
-                and is used by the Windows Installer to verify the validity of the file on re-install.
                 -->
                 <File Id="DummyFile"  Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
 

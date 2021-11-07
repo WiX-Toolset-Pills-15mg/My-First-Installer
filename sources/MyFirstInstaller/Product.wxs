@@ -26,25 +26,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <MediaTemplate />
 
         <!--
-        The <Feature> element is packing multiple components that can be installed together as a logical piece.
-        If the installer has a UI, the user can select independently the features that wants to be installed.
+        The <Feature> element is packing multiple components that can be installed together as a logical unit.
+        If the installer has a UI, the user can be presented with the list of features and requested to select which features to be installed.
+        The Title attribute contains the text displayed as label in the UI for the feature.
         
-        The current installer has only one feature and no UI. The feature will be automatically installed.
-        
-        If the installer has a UI, the Title attribute contains the text displayed in the UI for the feature.
+        The current installer has only one feature and no UI.
         The Level attribute should be set to 1 to enable the installation of the feature by default.
         -->
-
         <Feature Id="ProductFeature" Title="Deploy Files" Level="1">
-
-            <!--
-            ====================================================================================
-            Step 3: Tell Windows Installer to install the files
-            ====================================================================================
-            -->
-
             <ComponentGroupRef Id="FileComponents" />
-
         </Feature>
 
     </Product>

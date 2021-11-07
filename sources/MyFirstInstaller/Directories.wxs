@@ -22,45 +22,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Fragment>
 
         <!--
-        ====================================================================================
-        Step 1: Define the directory structure
-        ====================================================================================
-        -->
-
-        <!--
-        This section describes the directory structure that is needed on the target machine.
-        To improve the readability of the WiX file, it is a good practice to define the installation directories
-        separate of the section where there are listed the files to be deployed.
-        -->
-
-        <!-- The directories are created when there are files deployed in that directory. -->
-
-        <!--
-        The element with the id TARGETDIR is required by the Windows Installer and is the root of all directory structures of the installation.
-        Every WiX project will have this directory element.
+        This is the place where we describe the directory hierarchy that can be used later in this installer for the components base directory.
+        Check out the "FileComponents.wxs" file to see how the directories are used.
+        
+        Note: The directories are really created on disk only when there are files deployed in that directory.
         -->
         <Directory Id="TARGETDIR" Name="SourceDir">
-
-            <!--
-            The second element, with the id ProgramFilesFolder, uses a pre-defined Windows Installer property
-            to reference the Program Files folder on the user's machine.
-            In most cases this will resolve to c:\Program Files\.
-            -->
             <Directory Id="ProgramFilesFolder">
-
-                <!-- This element creates the "Dust in the Wind" directory. -->
                 <Directory Id="ManufacturerFolder" Name="Dust in the Wind">
-
-                    <!--
-                    This element creates the application's folder under Program Files, and it is given the id INSTALLFOLDER for later use in the WiX project.
-                    The id is in all capital letters to make it a public property that can be set from UI or via the command line.
-                    -->
                     <Directory Id="INSTALLFOLDER" Name="My First Installer - WiX Toolset Pill" />
-
                 </Directory>
-
             </Directory>
-
         </Directory>
 
     </Fragment>
