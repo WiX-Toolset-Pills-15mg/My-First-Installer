@@ -35,7 +35,7 @@ To install Orca:
 
 Open Orca and load an MSI file. In the left you will find a list with all the tables present in this MSI. When selecting a table, in the right part you will see the records present in that table.
 
-![image-20211107103802965](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20211107103802965.png)
+![Orca](orca.png)
 
 ### c) WiX Toolset
 
@@ -263,7 +263,7 @@ The last thing remaining to be done is to choose a name for the MSI file:
 
 - Right click on the project -> Properties -> Output name
 
-![image-20211107094820610](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20211107094820610.png)
+![Installer Properties](installer-properties.png)
 
 ## Step 6: Done
 
