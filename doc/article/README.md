@@ -37,7 +37,7 @@ Open Orca and load an MSI file. In the left you will find a list with all the ta
 
 ![Orca](orca.png)
 
-### c) WiX Toolset
+### d) WiX Toolset
 
 One way to create an MSI is to use Orca and modify, by hand, all the data in there. Another way, is to use WiX Toolset.
 
@@ -271,10 +271,10 @@ Build and then install :)
 
 **Note**: The source code example provides to files called `install.bat` and `uninstall.bat` that, even if they are configured in the project to be automatically deployed in the output (`bin/Release`) directory, they are not actually deployed. If you need them, please copy them by hand there.
 
-## Other Important notes
+## Final notes
 
-### Did you installed and lost the MSI file?
+### Did you installed and then lost the MSI file?
 
 If, in the developing process, it happens that you install an MSI and then, after a rebuild, you discover you are not able to uninstall the previous version because you lost the original MSI file (overwritten by the new one), don't panic.
 
-Go to Control Panel -> Programs and Features and uninstall it from there. By default, Windows keeps a copy of the original MSI file.
+Go to "Control Panel" -> "Programs and Features" and uninstall it from there. By default, Windows keeps a copy of the original MSI file.
