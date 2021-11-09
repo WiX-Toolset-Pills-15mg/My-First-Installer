@@ -10,3 +10,9 @@ A step-by-step tutorial can be found in the doc/article document, [here](doc/art
 
 - How to deploy a file using WiX Toolset?
 
+## Donations
+
+> If you like my work and want to support me, you can buy me a coffee:
+>
+> [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y62EZ8H)
+

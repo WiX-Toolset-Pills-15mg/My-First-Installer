@@ -9,4 +9,3 @@ assignees: ''
 
 # Description
 Do you have any improvement idea for this pill? I am eager to hear it.
-Please state youar idea as detailed as possible.
