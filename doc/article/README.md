@@ -4,7 +4,7 @@ In this tutorial we will:
 
 - Create a new WiX Project.
 - Configure a directory structure to be created on the target machine when installer is run.
-- Provide a text file to be deployed in the target directory.
+- Include a text file in the installer to be deployed in the target directory.
 
 ## Before we begin - Windows Installer, MSI files and WiX Toolset
 
@@ -193,7 +193,7 @@ The `INSTALLFOLDER` is another important directory. This is the root directory w
 
 **Suggestion**: Even if WiX allows it, I suggest to never add files directly in this structure. I prefer to keep this structure short, clean and easy to understand. The files will be configured later in another wxs file and will reference these directories by id.
 
-## Step 4: Components - Adding files to the installer
+## Step 4: Adding files to the installer - Components
 
 The next step would be to specify the files that need to be deployed by the installer. As with the directories fragment, let's to move this fragment in a separate file:
 
@@ -212,7 +212,7 @@ The next step would be to specify the files that need to be deployed by the inst
 </Wix>
 ```
 
-The files are added into the installer by creating components. Lots of components. Each component usually contain one resource like a file, a registry entry, a shortcuts, etc.
+The files are added into the installer by creating components. Lots of components. Each component usually contains one resource like a file, a registry entry, a shortcuts, etc.
 
 Every component must have its own unique GUID. If it is not specified explicitly, one is generated at build time.
 
@@ -224,7 +224,7 @@ Let's discuss the example.
 
 ### Add the component to the a feature
 
-An id, in our example `FileComponents`, is needed to be able reference it back from the `<Features>` tag. Remember that, each component or component group must be added to a feature:
+An id, in our example `FileComponents`, is needed to allow us to reference it back from the `<Features>` tag. Remember that, each component or component group must be added to a feature in order to be taken in consideration when the installer is executed:
 
 ```xml
 <Product ...>
