@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 
                 In the repair process, only the main file of the component can be repaired.
                 -->
-                <File Id="DummyFile"  Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
+                <File Id="DummyFile" Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
 
             </Component>
 

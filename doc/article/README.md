@@ -58,7 +58,7 @@ Install **WiX Toolset build tools** and the **Visual Studio extension** from `ht
 
 ![WiX Toolset Download](wix-toolset-download.png)
 
-**Note**: WiX Toolset can be used also independently of Visual Studio.
+**Note**: WiX Toolset can be used also independently of Visual Studio, from command line.
 
 ## Step 1: Create a new WiX project
 
