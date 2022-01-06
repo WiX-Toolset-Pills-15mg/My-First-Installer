@@ -14,7 +14,7 @@ Let's begin.
 
 Create a new project of type: "Setup Project for WiX Toolset v3" and call it `MyFirstInstallerKata`.
 
-![image-20220106164822554](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20220106164822554.png)
+![Create a new Project](create-a-new-project.png)
 
 ## 2) Format the WiX code
 
@@ -224,7 +224,7 @@ msiexec /i MyFirstInstallerKata.msi /l*vx install.bat
 
 - Select `install.bat` file -> File -> Save install.bat As... -> right click on the drop-down of the Save button -> Save with Encoding... -> "Yes" to replace the file -> Encoding dropdown -> "Unicode (UTF-8 without signature) - Codepage 65001" -> OK
 
-![image-20220106173348637](C:\Users\alexandru.iuga\AppData\Roaming\Typora\typora-user-images\image-20220106173348637.png)
+![Save file with Specific encoding](save-file-with-encoding.png)
 
 See Wikipedia for details about UTF-8 with BOM: https://en.wikipedia.org/wiki/Byte_order_mark
 
