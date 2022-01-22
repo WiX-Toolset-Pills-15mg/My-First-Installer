@@ -19,6 +19,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+    <!--
+    ====================================================================================================
+    START: Overview
+    ====================================================================================================
+    
+    This project demonstrates how to create a simple installer that deploys a dummy file.
+    
+    In this tutorial:
+        - Create a feature.
+        - Add a component into the previously created feature that contains a text file to be deployed
+          on disk.
+        - Define the hierarchy of directories where components like the previously created one will be
+          installed.
+    
+    NEXT: Product.wxs
+    
+    -->
+
+    
+    <!--
+    ====================================================================================================
+    Step 1: The Product
+    ====================================================================================================
+    
+    The <Product> is the main tag that describes the product for which the MSI file is created. We can
+    configure here all the information about our product, like name, version, manufacturer, an unique
+    id, the list of features, etc.
+    
+    NEXT: Product.wxs
+    -->
+
     <Product
         Id="*"
         Name="My First Installer - WiX Toolset Pill"
@@ -29,23 +61,35 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <Package
             InstallerVersion="200"
-            Compressed="yes" 
+            Compressed="yes"
             InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate />
 
         <!--
+        ====================================================================================================
+        Step 2: The Features
+        ====================================================================================================
+    
+        
         The <Feature> element is packing multiple components that can be installed together as a logical unit.
         If the installer has a UI, the user can be presented with the list of features and requested to select which features to be installed.
         The Title attribute contains the text displayed as label in the UI for the feature.
         
         The current installer has only one feature and no UI.
         The Level attribute should be set to 1 to enable the installation of the feature by default.
+        
+        NEXT: FileComponents.wxs
         -->
-        <Feature Id="ProductFeature" Title="Deploy Files" Level="1">
+        <Feature
+            Id="ProductFeature"
+            Title="Deploy Files"
+            Level="1">
+
             <ComponentGroupRef Id="FileComponents" />
         </Feature>
 
     </Product>
+
 </Wix>

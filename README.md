@@ -2,13 +2,43 @@
 
 ## Description
 
-This Pill contains a WiX project that demonstrates how to deploy a single file in the installation directory.
+This Pill demonstrates how to create an installer that deploys a single file in the installation directory.
 
-A step-by-step tutorial can be found in the `doc/article/README.md` document, [here](doc/article/README.md).
+## Content
 
-## Question
+### a) Tutorial (article)
 
-- How to deploy a file using WiX Toolset?
+A step-by-step tutorial can be found in the [doc/article/README.md](doc/article/README.md) document. You can find there explanations on solving the described problem.
+
+### b) Code example
+
+The complete Visual Studio solution that solves the described problem can be found in the [sources](sources) directory.
+
+### c) Code notes
+
+A shorter version of the tutorial can be found directly in the source code. Open Visual Studio solution and search (Ctrl+Shift+F) for the `START` comment, then follow the `Step` comments.
+
+**Note:** The `NEXT` tags at the end of each comment indicates the file where to search for the next `Step`.
+
+### d) Log file examples
+
+Sometimes a quick look into the log files may be necessary, but running the installer each time may be cumbersome. I generated the log files for the scenarios mentioned in the tutorial and I placed them into the [doc/logs](doc/logs) directory. Use them when needed.
+
+### e) Kata
+
+I think that a good practice for someone that just starts to learn WiX Toolset is to exercise daily in order to get familiar with the concepts. This project can be used as a kata and exercised daily for a number of days.
+
+In the [doc/kata/README.md](doc/kata/README.md) document there are instructions on how to perform the kata.
+
+When this kata is mastered, there are other exercises that are worth looking at:
+
+- [Immediate Custom Action](https://github.com/WiX-Toolset-Pills-15mg/Immediate-Custom-Action)
+- [Deferred Custom Action](https://github.com/WiX-Toolset-Pills-15mg/Deferred-Custom-Action)
+- [Bundle with MSI](https://github.com/WiX-Toolset-Pills-15mg/Bundle-with-MSI)
+
+## Suggestions
+
+Any suggestion or opinion is appreciated. Please, feel free to add a [GitHub Issue](https://github.com/WiX-Toolset-Pills-15mg/Planned-Failure/issues/new?assignees=&labels=&template=feature_request.md&title=).
 
 ## Donations
 

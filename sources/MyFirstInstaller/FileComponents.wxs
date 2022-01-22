@@ -22,18 +22,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Fragment>
 
         <!--
-        A component group may contain multiple components.
+        A component group is just a container for multiple components.
         -->
         <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
 
             <Component>
 
                 <!--
-                In general, you should restrict yourself to a single file per component.
-                The Windows Installer is designed to support thousands of components in a single installer,
-                so unless you have a very good reason, keep to one file per component. 
+                ====================================================================================================
+                Step 3: The File
+                ====================================================================================================
+
+                In general, you should restrict yourself to a single element, in this case a file per component.
+                The Windows Installer is designed to support thousands of components in a single installer, so
+                unless you have a very good reason, keep to one file per component. 
                 
                 In the repair process, only the main file of the component can be repaired.
+                
+                The file is deployed in the directory mentioned by the <Component> or the <ComponentGroup>.
+                In our example, the <ComponentGroup> is the one that specifies the directory.
+                The directory is indicated only by its id, in this case "INSTALLFOLDER". To find out the actual path
+                where the file will be installed, we must look into the "Directories.wxs" file.
+                
+                NEXT: Directories.wxs
                 -->
                 <File Id="DummyFile" Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
 

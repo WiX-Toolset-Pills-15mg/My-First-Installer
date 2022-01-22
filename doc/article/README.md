@@ -3,7 +3,7 @@
 In this tutorial we will:
 
 - Create a new WiX Project.
-- Configure a directory structure to be created on the target machine when installer is run.
+- Define a hierarchy of directories where components will be install.
 - Include a text file in the installer to be deployed in the target directory.
 
 ## Before we begin - Windows Installer, MSI files and WiX Toolset

@@ -22,10 +22,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Fragment>
 
         <!--
-        This is the place where we describe the directory hierarchy that can be used later in this installer for the components base directory.
+        ====================================================================================================
+        Step 4: The Directories
+        ====================================================================================================
+
+        This is the place where we describe the directory hierarchy. The directories are referenced, later,
+        in this installer by the components. Each component must have a base directory.
         Check out the "FileComponents.wxs" file to see how the directories are used.
         
-        Note: The directories are really created on disk only when there are files deployed in that directory.
+        Note: The directories are really created on disk only when the files are actually deployed in that
+        directory. If no file is deployed in a directory, it is not created, even if it is mentioned here.
+        
+        The "Name" attribute is the name of the directory as it will be created on the disk.
+        The "Id" attribute is used only in WiX, to reference the directory.
+        
+        END
         -->
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder">
