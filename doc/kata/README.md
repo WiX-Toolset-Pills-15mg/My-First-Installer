@@ -215,7 +215,7 @@ In the `FileComponents` group remove the comments and replace them with a compon
 - Right click on project -> Add -> New Item -> Text File -> install.bat
 
 ```
-msiexec /i MyFirstInstallerKata.msi /l*vx install.bat
+msiexec /i MyFirstInstallerKata.msi /l*vx install.log
 ```
 
 ### b) Remove BOM
@@ -237,7 +237,7 @@ Adding the `uninstall.bat` file is similar to adding the `install.bat` script wi
 - The content of the file is:
 
   ```
-  msiexec /x MyFirstInstallerKata.msi /l*vx uninstall.bat
+  msiexec /x MyFirstInstallerKata.msi /l*vx uninstall.log
   ```
 
 **Note**: Don't forget about the BOM.
