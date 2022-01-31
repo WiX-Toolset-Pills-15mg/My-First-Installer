@@ -49,7 +49,7 @@ Content:
   - [Deferred Custom Action](https://github.com/WiX-Toolset-Pills-15mg/Deferred-Custom-Action)
   - [Bundle with MSI](https://github.com/WiX-Toolset-Pills-15mg/Bundle-with-MSI)
 
-## Suggestions
+## Discussions and Suggestions
 
 [GitHub Discussions](https://github.com/WiX-Toolset-Pills-15mg/My-First-Installer/discussions)
 
