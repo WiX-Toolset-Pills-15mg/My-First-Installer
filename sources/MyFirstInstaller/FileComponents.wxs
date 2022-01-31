@@ -22,30 +22,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Fragment>
 
         <!--
-        A component group is just a container for multiple components.
+        ====================================================================================================
+        Step 4: The Components
+        ====================================================================================================
+
+        A component group is just a container for multiple components. It is there for us, the developers,
+        to easier reference multiple components.
+        
+        The "Directory" attribute specifies a directory that will be automatically set to all the components
+        from the group. Let's see how the directory hierarchy is declared.
+        
+        NEXT: Directories.wxs
         -->
+
         <ComponentGroup Id="FileComponents" Directory="INSTALLFOLDER">
 
-            <Component>
+            <Component Id="DummyFileComponent">
 
                 <!--
                 ====================================================================================================
-                Step 3: The File
+                Step 6: Create the "dummy.txt" file
                 ====================================================================================================
 
-                In general, you should restrict yourself to a single element, in this case a file per component.
+                Add a ne text file into the project, called "dummy.txt". This will be the file packed into a
+                component in the MSI and deployed at install time on the target machine.
+                
+                NEXT: FileComponents.wxs (DOWN)
+                -->
+
+                <!--
+                ====================================================================================================
+                Step 7: Adding files to the installer
+                ====================================================================================================
+
+                In general, you should restrict yourself to a single resource, in this case a file, per component.
                 The Windows Installer is designed to support thousands of components in a single installer, so
                 unless you have a very good reason, keep to one file per component. 
                 
-                In the repair process, only the main file of the component can be repaired.
+                In the repair process, only the main resource (in this case file) of the component can be repaired.
                 
-                The file is deployed in the directory mentioned by the <Component> or the <ComponentGroup>.
-                In our example, the <ComponentGroup> is the one that specifies the directory.
-                The directory is indicated only by its id, in this case "INSTALLFOLDER". To find out the actual path
-                where the file will be installed, we must look into the "Directories.wxs" file.
+                The "Source"
                 
-                NEXT: Directories.wxs
+                NEXT: Product.wxs
                 -->
+
                 <File Id="DummyFile" Source="$(var.ProjectDir)dummy.txt" KeyPath="yes" />
 
             </Component>

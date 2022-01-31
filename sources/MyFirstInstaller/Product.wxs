@@ -25,30 +25,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     START: Overview
     ====================================================================================================
     
-    This project demonstrates how to create a simple installer that deploys a dummy file.
+    This project demonstrates how to create a simple installer that deploys one file.
     
     In this tutorial:
-        - Create a feature.
-        - Add a component into the previously created feature that contains a text file to be deployed
-          on disk.
-        - Define the hierarchy of directories where components like the previously created one will be
-          installed.
+    
+        - Create a new WiX Project.
+        
+        - Define a hierarchy of directories where components will be installed.
+        
+        - Create Feature -> Component -> File elements to include a text file that will be deployed in
+          the target directory at install time.
+        
+        - Install/Uninstall the MSI.
     
     NEXT: Product.wxs
-    
     -->
-
     
     <!--
     ====================================================================================================
-    Step 1: The Product
+    Step 1: Create a new WiX project
     ====================================================================================================
     
-    The <Product> is the main tag that describes the product for which the MSI file is created. We can
-    configure here all the information about our product, like name, version, manufacturer, an unique
-    id, the list of features, etc.
+    In Visual Studio create a new "Setup Project for WiX v3" project:
     
-    NEXT: Product.wxs
+    NEXT: Product.wxs (DOWN)
+    -->
+
+    <!--
+    ====================================================================================================
+    Step 2: The Product
+    ====================================================================================================
+    
+    The <Product> is the main tag of the WiX Toolset project. It contains directly or refers everything
+    that the resulted MSI file will contain. When you read a WiX project, you should start from the
+    "<Product>" tag.
+    
+    NEXT: Product.wxs (DOWN)
     -->
 
     <Product
@@ -69,19 +81,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <!--
         ====================================================================================================
-        Step 2: The Features
+        Step 3: The Features
         ====================================================================================================
-    
         
-        The <Feature> element is packing multiple components that can be installed together as a logical unit.
-        If the installer has a UI, the user can be presented with the list of features and requested to select which features to be installed.
-        The Title attribute contains the text displayed as label in the UI for the feature.
-        
-        The current installer has only one feature and no UI.
-        The Level attribute should be set to 1 to enable the installation of the feature by default.
+        The <Feature> element is packing multiple components that can be installed together as a logical
+        unit.
         
         NEXT: FileComponents.wxs
         -->
+
         <Feature
             Id="ProductFeature"
             Title="Deploy Files"
@@ -93,3 +101,53 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </Product>
 
 </Wix>
+
+<!--
+====================================================================================================
+Step 8: The MSI's Name
+====================================================================================================
+
+Let's choose a name for the MSI file:
+    - Right click on the project -> Properties -> Output name
+
+By default, the MSI's name is the same as the project's name, but, if you like, it can be changed
+from here.
+
+NEXT: Product.wxs (DOWN)
+-->
+
+<!--
+====================================================================================================
+Step 9: Create install/uninstall scripts
+====================================================================================================
+
+Create new text files that will be renamed to ".bat":
+    - Right click on project -> Add -> New Item -> Text File -> install.bat
+    - Right click on project -> Add -> New Item -> Text File -> uninstall.bat
+
+The WiX Toolset template generates an UTF-8 file with BOM. Remove the BOM before executing the
+script files. See the tutorial for how to do that.
+
+NEXT: Product.wxs (DOWN)
+-->
+
+<!--
+====================================================================================================
+Step 10: Add post-build event to deploy the scripts
+====================================================================================================
+
+The ".bat" files must be manually copied into the target directory:
+    - Right click on project -> Properties -> Build Events -> Post-build Event Command Line
+
+NEXT: Product.wxs (DOWN)
+-->
+
+<!--
+====================================================================================================
+Step 11: Build
+====================================================================================================
+
+Build the project: Ctrl+Shift+B
+
+NEXT: install.bat
+-->

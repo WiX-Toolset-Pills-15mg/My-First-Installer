@@ -1,7 +1,7 @@
-WiX Toolset Pills - My First Installer
+WiX Toolset Pills 15mg - My First Installer
 ==============================================================================
 
-This file is part of the "My First Installer" Pill.
+This file is part of the "My First Installer" pill.
 The pill demonstrates how to create a very basic MSI installer that deploys a single file. This file.
 
 For more details please chech the GitHub repository:
