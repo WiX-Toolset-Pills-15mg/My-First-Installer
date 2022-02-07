@@ -18,29 +18,29 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+<!--
+====================================================================================================
+START: Overview
+====================================================================================================
+
+This project demonstrates how to create a simple installer that deploys one file.
+
+In this tutorial:
+
+    - Create a new WiX Project.
+    
+    - Define a hierarchy of directories where components will be installed.
+    
+    - Create Feature -> Component -> File elements to include a text file that will be deployed in
+      the target directory at install time.
+    
+    - Install/Uninstall the MSI.
+
+NEXT: Product.wxs
+-->
+
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-    <!--
-    ====================================================================================================
-    START: Overview
-    ====================================================================================================
-    
-    This project demonstrates how to create a simple installer that deploys one file.
-    
-    In this tutorial:
-    
-        - Create a new WiX Project.
-        
-        - Define a hierarchy of directories where components will be installed.
-        
-        - Create Feature -> Component -> File elements to include a text file that will be deployed in
-          the target directory at install time.
-        
-        - Install/Uninstall the MSI.
-    
-    NEXT: Product.wxs
-    -->
-    
     <!--
     ====================================================================================================
     Step 1: Create a new WiX project
