@@ -1,0 +1,35 @@
+INSTALL (Client Side - install)
+{
+	FindRelatedProducts
+	LaunchConditions
+	ValidateProductID
+	CostInitialize
+	FileCost
+	CostFinalize
+	MigrateFeatureStates
+	ExecuteAction
+	{
+		INSTALL (Server Side - install)
+		{
+			FindRelatedProducts (Skipping FindRelatedProducts action: already done on client side)
+			LaunchConditions
+			ValidateProductID
+			CostInitialize
+			FileCost
+			CostFinalize
+			MigrateFeatureStates (Skipping MigrateFeatureStates action: already done on client side)
+			InstallValidate
+			RemoveExistingProducts
+			InstallInitialize
+			ProcessComponents
+			UnpublishFeatures
+			RemoveFiles
+			InstallFiles
+			RegisterUser
+			RegisterProduct
+			PublishFeatures
+			PublishProduct
+			InstallFinalize
+		}
+	}
+}
