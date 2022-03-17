@@ -36,7 +36,7 @@ In this tutorial:
     
     - Install/Uninstall the MSI.
 
-NEXT: Product.wxs
+NEXT: Product.wxs (DOWN)
 -->
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
